@@ -1125,7 +1125,9 @@ __DEV__ &&
             "This object has been omitted by React in the console log to avoid sending too much data from the server. Try logging smaller or more specific objects." ===
             value
               ? "\u2026"
-              : JSON.stringify(value);
+              : JSON.stringify(
+                  1024 <= value.length ? value.slice(0, 1023) + "\u2026" : value
+                );
           break;
         case "undefined":
           value = "undefined";
@@ -5074,10 +5076,10 @@ __DEV__ &&
       return hook.checkDCE ? !0 : !1;
     })({
       bundleType: 1,
-      version: "19.3.0-www-modern-8fc5763b-20260513",
+      version: "19.3.0-www-modern-557e28fa-20260601",
       rendererPackageName: "react-flight-server-fb",
       currentDispatcherRef: ReactSharedInternals,
-      reconcilerVersion: "19.3.0-www-modern-8fc5763b-20260513",
+      reconcilerVersion: "19.3.0-www-modern-557e28fa-20260601",
       getCurrentComponentInfo: function () {
         return currentOwnerInDEV;
       }
